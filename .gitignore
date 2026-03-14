@@ -1,2 +1,8 @@
 /Library
 /Temp
+/Logs
+/ProjectSettings
+/UserSettings
+/.vs
+/Build
+*.rar
