@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - ExitDoor
+  - Radio
   layers:
   - Default
   - TransparentFX

@@ -1,23 +1,31 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ClickController : MonoBehaviour
 {
     public Camera cam;
 
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+    private PlayerInput _input;
+    private InputAction _clickAction;
 
-            if (Physics.Raycast(ray, out hit))
-            {
-                if (hit.collider.CompareTag("ExitDoor"))
-                {
-                    Application.Quit();
-                }
-            }
+    void Awake()
+    {
+        _input = GetComponent<PlayerInput>();          
+        _clickAction = _input.actions["Click"];
+    }
+
+    void OnEnable() => _clickAction.performed += OnClick;
+    void OnDisable() => _clickAction.performed -= OnClick;
+
+    private void OnClick(InputAction.CallbackContext ctx)
+    {
+        Vector2 screenPos = Mouse.current.position.ReadValue();
+        Ray ray = cam.ScreenPointToRay(screenPos);
+
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            if (hit.collider.CompareTag("ExitDoor"))
+                Application.Quit();
         }
     }
 }
