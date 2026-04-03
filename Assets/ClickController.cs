@@ -5,17 +5,11 @@ public class ClickController : MonoBehaviour
 {
     public Camera cam;
 
-    private PlayerInput _input;
-    private InputAction _clickAction;
+    public InputActionReference clickAction;
 
-    void Awake()
-    {
-        _input = GetComponent<PlayerInput>();          
-        _clickAction = _input.actions["Click"];
-    }
 
-    void OnEnable() => _clickAction.performed += OnClick;
-    void OnDisable() => _clickAction.performed -= OnClick;
+    void OnEnable() => clickAction.action.performed += OnClick;
+    void OnDisable() => clickAction.action.performed -= OnClick;
 
     private void OnClick(InputAction.CallbackContext ctx)
     {
@@ -24,8 +18,10 @@ public class ClickController : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            if (hit.collider.CompareTag("ExitDoor"))
-                Application.Quit();
+            if(hit.collider.TryGetComponent<IInteractable>(out var clickable))
+            {
+                clickable.OnClick();
+            }
         }
     }
 }
