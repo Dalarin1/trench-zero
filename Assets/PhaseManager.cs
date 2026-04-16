@@ -1,7 +1,4 @@
-﻿using System.Resources;
-using UnityEngine.Events;
-using UnityEngine;
-using System.Collections;
+﻿using UnityEngine;
 
 public enum GamePhase
 {
@@ -84,3 +81,4 @@ public class PhaseManager : MonoBehaviour
         }
     }
 }
+

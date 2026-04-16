@@ -1,4 +1,6 @@
-﻿public enum SoldierType
+﻿using UnityEngine;
+
+public enum SoldierType
 {
     Basic,
     Medic,
@@ -23,12 +25,40 @@ public class SoldierTrait
     
 }
 
-public class OLDSoldier
+public class Soldier
 {
     public SoldierType type;
     public SoldierState state;
     public SoldierTrait trait;
+    public bool has_gas_mask = false;
     public string rank;
+
+    public void TakeDamage()
+    {
+        // Логика получения урона
+        if (state == SoldierState.Idle || state == SoldierState.Defending)
+        {
+            state = SoldierState.Wounded;
+        }
+        else if (state == SoldierState.Wounded)
+        {
+            state = SoldierState.Dead;
+        }
+    }
+    public void Heal()
+    {
+        if (state == SoldierState.Wounded)
+        {
+            state = SoldierState.Idle;
+        }
+    }
+    public void TryMutate()
+    {
+        if (!has_gas_mask)
+        {
+            type = SoldierType.Mutant;
+        }
+    }
 }
 
 public class SoldierDosier
@@ -37,5 +67,5 @@ public class SoldierDosier
     public string Name;
     public string Description;
 
-    //public Photo photo;
+    //public Photo photo
 }
