@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Dosier : MonoBehaviour, IInteractable
+public class DosierController : MonoBehaviour, IInteractable
 {
     public void OnClick()
     {

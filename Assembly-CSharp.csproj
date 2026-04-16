@@ -64,13 +64,17 @@
     <Compile Include="Assets\DoorExit.cs" />
     <Compile Include="Assets\ClickController.cs" />
     <Compile Include="Assets\Dosier.cs" />
+    <Compile Include="Assets\Soldier.cs" />
     <Compile Include="Assets\CameraRotation.cs" />
     <Compile Include="Assets\Rulonen.cs" />
     <Compile Include="Assets\Clock.cs" />
     <Compile Include="Assets\IInteractable.cs" />
     <Compile Include="Assets\Thermometer.cs" />
     <Compile Include="Assets\Radio.cs" />
+    <Compile Include="Assets\TimeSwitch.cs" />
     <Compile Include="Assets\Map.cs" />
+    <Compile Include="Assets\RadioUI.cs" />
+    <Compile Include="Assets\GameController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
